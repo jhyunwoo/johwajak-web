@@ -45,22 +45,6 @@ export default function Quiz({ questions }: { questions: questions[] }) {
     }
   }
 
-  async function questionEnd() {
-    if (selectedQuestions === undefined) return;
-    if (selectedQuestions?.length > 0) {
-      setIsLoading(true);
-      const res = await axios.put("/api/user/updatePoint", {
-        data: {
-          result: result,
-          chapter: chapter,
-          stage: stageId,
-        },
-      });
-      setIsLoading(false);
-    }
-    setIsLoading(false);
-  }
-
   function backToMain() {
     router.replace(`/chapter/${chapter}`);
     setIsLoading(false);
@@ -68,10 +52,33 @@ export default function Quiz({ questions }: { questions: questions[] }) {
   }
 
   useEffect(() => {
+    async function questionEnd() {
+      if (selectedQuestions === undefined) return;
+      if (selectedQuestions?.length > 0) {
+        setIsLoading(true);
+        const res = await axios.put("/api/user/updatePoint", {
+          data: {
+            result: result,
+            chapter: chapter,
+            stage: stageId,
+          },
+        });
+        setIsLoading(false);
+      }
+      setIsLoading(false);
+    }
     if (questionNumber === selectedQuestions?.length) {
       questionEnd();
     }
-  }, [questionNumber, selectedQuestions?.length]);
+  }, [
+    chapter,
+    questionNumber,
+    result,
+    selectedQuestions,
+    selectedQuestions?.length,
+    setIsLoading,
+    stageId,
+  ]);
 
   useEffect(() => {
     if (questions.length <= Number(stageId) * 10) {
