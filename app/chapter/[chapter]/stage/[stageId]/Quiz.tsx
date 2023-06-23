@@ -92,37 +92,37 @@ export default function Quiz({ questions }: { questions: questions[] }) {
     }
   }, [questions, stageId]);
 
-  // useEffect(() => {
-  //   if (selectedQuestions === undefined) return;
-  //   if (selectedQuestions[questionNumber]) {
-  //     let selectedOptions: string[] = [];
-  //     if (
-  //       selectedQuestions[questionNumber].options.length >
-  //       Number(stageId) + 2
-  //     ) {
-  //       for (let i = 0; i < 3; i++) {
-  //         let randomValue =
-  //           selectedQuestions[questionNumber].options[
-  //             Math.floor(
-  //               Math.random() * selectedQuestions[questionNumber].options.length
-  //             )
-  //           ];
-  //         if (selectedOptions.includes(randomValue)) {
-  //           i--;
-  //           continue;
-  //         } else {
-  //           selectedOptions.push(randomValue);
-  //         }
-  //       }
-  //       selectedOptions.push(selectedQuestions[questionNumber].answer);
-  //       setOptions(shuffle(selectedOptions));
-  //     } else {
-  //       selectedOptions = selectedQuestions[questionNumber].options;
-  //       selectedOptions.push(selectedQuestions[questionNumber].answer);
-  //       setOptions(shuffle(selectedOptions));
-  //     }
-  //   }
-  // }, [questionNumber, selectedQuestions, stageId]);
+  useEffect(() => {
+    if (selectedQuestions === undefined) return;
+    if (selectedQuestions[questionNumber]) {
+      let selectedOptions: string[] = [];
+      if (
+        selectedQuestions[questionNumber].options.length >
+        Number(stageId) + 2
+      ) {
+        for (let i = 0; i < 3; i++) {
+          let randomValue =
+            selectedQuestions[questionNumber].options[
+              Math.floor(
+                Math.random() * selectedQuestions[questionNumber].options.length
+              )
+            ];
+          if (selectedOptions.includes(randomValue)) {
+            i--;
+            continue;
+          } else {
+            selectedOptions.push(randomValue);
+          }
+        }
+        selectedOptions.push(selectedQuestions[questionNumber].answer);
+        setOptions(shuffle(selectedOptions));
+      } else {
+        selectedOptions = selectedQuestions[questionNumber].options;
+        selectedOptions.push(selectedQuestions[questionNumber].answer);
+        setOptions(shuffle(selectedOptions));
+      }
+    }
+  }, [questionNumber, selectedQuestions, stageId]);
 
   useEffect(() => {
     async function getChapterInfo() {
