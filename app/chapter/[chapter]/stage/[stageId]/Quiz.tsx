@@ -91,37 +91,37 @@ export default function Quiz({ questions }: { questions: questions[] }) {
     }
   }, [questions, stageId]);
 
-  useEffect(() => {
-    if (selectedQuestions === undefined) return;
-    if (selectedQuestions[questionNumber]) {
-      let selectedOptions: string[] = [];
-      if (
-        selectedQuestions[questionNumber].options.length >
-        Number(stageId) + 2
-      ) {
-        for (let i = 0; i < 3; i++) {
-          let randomValue =
-            selectedQuestions[questionNumber].options[
-              Math.floor(
-                Math.random() * selectedQuestions[questionNumber].options.length
-              )
-            ];
-          if (selectedOptions.includes(randomValue)) {
-            i--;
-            continue;
-          } else {
-            selectedOptions.push(randomValue);
-          }
-        }
-        selectedOptions.push(selectedQuestions[questionNumber].answer);
-        setOptions(shuffle(selectedOptions));
-      } else {
-        selectedOptions = selectedQuestions[questionNumber].options;
-        selectedOptions.push(selectedQuestions[questionNumber].answer);
-        setOptions(shuffle(selectedOptions));
-      }
-    }
-  }, [questionNumber, selectedQuestions, stageId]);
+  // useEffect(() => {
+  //   if (selectedQuestions === undefined) return;
+  //   if (selectedQuestions[questionNumber]) {
+  //     let selectedOptions: string[] = [];
+  //     if (
+  //       selectedQuestions[questionNumber].options.length >
+  //       Number(stageId) + 2
+  //     ) {
+  //       for (let i = 0; i < 3; i++) {
+  //         let randomValue =
+  //           selectedQuestions[questionNumber].options[
+  //             Math.floor(
+  //               Math.random() * selectedQuestions[questionNumber].options.length
+  //             )
+  //           ];
+  //         if (selectedOptions.includes(randomValue)) {
+  //           i--;
+  //           continue;
+  //         } else {
+  //           selectedOptions.push(randomValue);
+  //         }
+  //       }
+  //       selectedOptions.push(selectedQuestions[questionNumber].answer);
+  //       setOptions(shuffle(selectedOptions));
+  //     } else {
+  //       selectedOptions = selectedQuestions[questionNumber].options;
+  //       selectedOptions.push(selectedQuestions[questionNumber].answer);
+  //       setOptions(shuffle(selectedOptions));
+  //     }
+  //   }
+  // }, [questionNumber, selectedQuestions, stageId]);
 
   useEffect(() => {
     async function getChapterInfo() {
@@ -157,16 +157,18 @@ export default function Quiz({ questions }: { questions: questions[] }) {
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4 fixed bottom-16 right-4 left-4">
-              {options &&
-                options.map((data, key) => (
-                  <button
-                    onClick={() => checkAnswer(data)}
-                    key={key}
-                    className="bg-white ring-2 ring-lime-400 shadow-md hover:shadow-xl transition duration-200 p-12 rounded-lg flex justify-center items-center text-2xl text-left font-semibold"
-                  >
-                    <div>{data}</div>
-                  </button>
-                ))}
+              <button
+                onClick={() => checkAnswer("O")}
+                className=" bg-red-500 shadow-md hover:shadow-xl transition duration-200 p-12 rounded-lg flex justify-center items-center text-2xl text-left font-semibold"
+              >
+                <div className="text-white">O</div>
+              </button>
+              <button
+                onClick={() => checkAnswer("X")}
+                className=" bg-blue-500 shadow-md hover:shadow-xl transition duration-200 p-12 rounded-lg flex justify-center items-center text-2xl text-left font-semibold"
+              >
+                <div className="text-white">X</div>
+              </button>
             </div>
           </div>
         ) : (
