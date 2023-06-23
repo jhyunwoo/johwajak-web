@@ -56,14 +56,17 @@ export default function Quiz({ questions }: { questions: questions[] }) {
       if (selectedQuestions === undefined) return;
       if (selectedQuestions?.length > 0) {
         setIsLoading(true);
-        const res = await axios.put("/api/user/updatePoint", {
-          data: {
-            result: result,
-            chapter: chapter,
-            stage: stageId,
-          },
-        });
-        setIsLoading(false);
+        try {
+          const res = await axios.put("/api/user/updatePoint", {
+            data: {
+              result: result,
+              chapter: chapter,
+              stage: stageId,
+            },
+          });
+        } catch (e) {
+          console.log(e);
+        }
       }
       setIsLoading(false);
     }
