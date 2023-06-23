@@ -219,6 +219,19 @@ export default function Quiz({ questions }: { questions: questions[] }) {
                     </div>
                   </section>
                 ))}
+                <div className="bg-white p-2 rounded-lg flex items-center space-x-2 shadow-lg">
+                  <div className="text-lg font-semibold">
+                    문제 정답 이의신청
+                  </div>
+                  <Link
+                    href={
+                      "https://instagram.com/ill.poet__?igshid=NTc4MTIwNjQ2YQ=="
+                    }
+                    className={"p-2 px-4 rounded-full bg-lime-500 text-white"}
+                  >
+                    이의 신청
+                  </Link>
+                </div>
               </div>
             </div>
 
