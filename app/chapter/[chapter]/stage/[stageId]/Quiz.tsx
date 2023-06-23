@@ -56,6 +56,7 @@ export default function Quiz({ questions }: { questions: questions[] }) {
           stage: stageId,
         },
       });
+      setIsLoading(false);
     }
     setIsLoading(false);
   }
