@@ -12,8 +12,8 @@ import CookieBanner from "@/components/cookiebanner";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Inco | Quiz",
-  description: "2023 정보통신 2회고사 범위 퀴즈 게임",
+  title: "조화작 | Quiz",
+  description: "2023 화법과 작문 2회고사 범위 퀴즈 게임",
   manifest: "/manifest.json",
   themeColor: "#ffffff",
   icons: {
@@ -27,6 +27,11 @@ export const metadata = {
         url: "/images/favicons/favicon-32x32.png",
         type: "image/png",
         sizes: "32x32",
+      },
+      {
+        url: "/images/favicons/favicon-96x96.png",
+        type: "image/png",
+        sizes: "96x96",
       },
     ],
     apple: { url: "/images/favicons/apple-icon.png", type: "image/png" },
@@ -252,7 +257,7 @@ export default async function RootLayout({
 
   return (
     <html lang="kr">
-      <GoogleAnalytics GA_MEASUREMENT_ID="G-XF8NNSCT6H" />
+      <GoogleAnalytics GA_MEASUREMENT_ID="G-57WFY0DXKP" />
       <AuthProvider>
         <Recoil>
           <body className={(inter.className, "scrollbar-hide")}>

@@ -19,6 +19,7 @@ export default function Quiz({ questions }: { questions: questions[] }) {
   const [options, setOptions] = useState<string[]>();
   const [score, setScore] = useState<number>(0);
   const [result, setResult] = useState<boolean[]>([]);
+  const [chapterInfo, setChapterInfo] = useState<any>();
 
   const router = useRouter();
 
@@ -122,11 +123,28 @@ export default function Quiz({ questions }: { questions: questions[] }) {
     }
   }, [questionNumber, selectedQuestions, stageId]);
 
+  useEffect(() => {
+    async function getChapterInfo() {
+      const res = await axios.get("/api/chapter", {
+        params: {
+          chapterId: chapter,
+        },
+      });
+      setChapterInfo(res.data);
+    }
+    if (chapter) {
+      getChapterInfo();
+    }
+  }, [chapter]);
+
   return (
     <div className="flex flex-col w-full p-4 pt-12 pb-16">
       {selectedQuestions &&
         (selectedQuestions[questionNumber] ? (
-          <div className="w-full flex justify-center items-center">
+          <div className="w-full flex flex-col justify-center items-center">
+            <div className="text-xl font-bold text-left mr-auto">
+              {chapterInfo?.title}
+            </div>
             <div className="bg-white p-4 sm:p-6 md:p-8 rounded-xl shadow-lg font-semibold my-4 w-full flex flex-col justify-center items-start">
               <div className="flex flex-col justify-center items-start">
                 <div>
@@ -138,13 +156,13 @@ export default function Quiz({ questions }: { questions: questions[] }) {
                 </div>
               </div>
             </div>
-            <div className="grid grid-cols-1 gap-4 fixed bottom-16 right-4 left-4">
+            <div className="grid grid-cols-2 gap-4 fixed bottom-16 right-4 left-4">
               {options &&
                 options.map((data, key) => (
                   <button
                     onClick={() => checkAnswer(data)}
                     key={key}
-                    className="bg-white ring-2 ring-sky-400 shadow-md hover:shadow-xl transition duration-200 p-2 rounded-lg flex text-base text-left font-semibold"
+                    className="bg-white ring-2 ring-lime-400 shadow-md hover:shadow-xl transition duration-200 p-12 rounded-lg flex justify-center items-center text-2xl text-left font-semibold"
                   >
                     <div>{data}</div>
                   </button>
@@ -193,7 +211,7 @@ export default function Quiz({ questions }: { questions: questions[] }) {
 
             <button
               onClick={backToMain}
-              className="text-lg w-full p-3 px-4 text-center bg-sky-400 text-white font-semibold rounded-lg shadow-lg hover:bg-sky-500 transition duration-200 "
+              className="text-lg w-full p-3 px-4 text-center bg-lime-600 text-white font-semibold rounded-lg shadow-lg hover:bg-lime-700 mb-4 transition duration-200 "
             >
               종료
             </button>

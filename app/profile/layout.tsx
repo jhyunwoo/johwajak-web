@@ -3,8 +3,8 @@ import HeadBar from "@/components/HeadBar";
 import Layout from "@/components/Layout";
 
 export const metadata = {
-  title: "Inco | Profile",
-  description: "Inco Profile",
+  title: "조화작 | Profile",
+  description: "조화작 Profile",
 };
 
 export default function ProfileLayout({

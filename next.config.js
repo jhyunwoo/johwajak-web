@@ -9,7 +9,7 @@ module.exports = withPWA({
     return [
       {
         source: "/google-analytics",
-        destination: "https://www.googletagmanager.com/gtag/js?id=G-XF8NNSCT6H",
+        destination: "https://www.googletagmanager.com/gtag/js?id=G-57WFY0DXKP",
       },
     ];
   },

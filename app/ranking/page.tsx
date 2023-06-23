@@ -26,37 +26,49 @@ export default async function Ranking() {
     timeStyle: "short",
   }).format(date);
 
-  function getGrade(score: any) {
-    if (score < 200) {
-      return "bg-red-400";
-    } else if (score < 400) {
-      return "bg-orange-400";
-    } else if (score < 600) {
-      return "bg-yellow-400";
+  function getGrade(score: number) {
+    if (score < 500) {
+      return "bg-slate-500";
     } else if (score < 1000) {
-      return "bg-gradient-to-r from-emerald-600 via-green-500 to-lime-600";
+      return "bg-stone-700";
     } else if (score < 1500) {
+      return "bg-gradient-to-r from-slate-300 via-slate-400 to-slate-300";
+    } else if (score < 2000) {
+      return "bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-300";
+    } else if (score < 2500) {
+      return "bg-gradient-to-r from-sky-300 via-sky-500 to-sky-400";
+    } else if (score < 3000) {
+      return "bg-gradient-to-r from-emerald-600 via-green-500 to-lime-600";
+    } else if (score < 3500) {
       return "bg-gradient-to-r from-cyan-300 via-blue-600 to-sky-400";
-    } else if (score < 2100) {
+    } else if (score < 4000) {
       return "bg-gradient-to-r from-purple-600 via-blue-500 to-violet-600";
+    } else if (score < 4500) {
+      return "bg-gradient-to-r from-blue-600 via-purple-500 to-sky-600";
     } else {
       return "bg-gradient-to-r from-red-400 via-yellow-400 to-blue-400";
     }
   }
 
-  function getGradeName(score: any) {
-    if (score < 200) {
-      return "Bronze";
-    } else if (score < 400) {
-      return "Silver";
-    } else if (score < 600) {
-      return "Gold";
+  function getGradeName(score: number) {
+    if (score < 500) {
+      return "Iron";
     } else if (score < 1000) {
-      return "Platinum";
+      return "Bronze";
     } else if (score < 1500) {
+      return "Silver";
+    } else if (score < 2000) {
+      return "Gold";
+    } else if (score < 2500) {
+      return "Platinum";
+    } else if (score < 3000) {
+      return "Emerald";
+    } else if (score < 3500) {
       return "Diamond";
-    } else if (score < 2100) {
+    } else if (score < 4000) {
       return "Master";
+    } else if (score < 4500) {
+      return "Grand Master";
     } else {
       return "Challenger";
     }

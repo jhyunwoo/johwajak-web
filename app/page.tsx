@@ -52,7 +52,7 @@ export default async function Home() {
             </div>
           </Link>
         ))}
-        <Link
+        {/* <Link
           href={"https://yeonjunquiz.vercel.app/JungboTongsin/quiz"}
           className=" bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition duration-200 flex flex-col justify-center items-start"
         >
@@ -66,7 +66,7 @@ export default async function Home() {
             2회고사도 <span className="text-sky-600 font-bold">김연준</span>만
             믿고 따라 오세요.
           </div>
-        </Link>
+        </Link> */}
       </div>
     </Layout>
   );

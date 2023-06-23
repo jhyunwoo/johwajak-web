@@ -3,8 +3,8 @@ import HeadBar from "@/components/HeadBar";
 import Layout from "@/components/Layout";
 
 export const metadata = {
-  title: "Inco | Ranking",
-  description: "2023 정보통신 퀴즈 랭킹",
+  title: "조화작 | Ranking",
+  description: "2023 화법과 작문 퀴즈 랭킹",
 };
 
 export default function RankingLayout({

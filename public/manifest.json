@@ -1,12 +1,12 @@
 {
-  "theme_color": "#7dd3fc",
+  "theme_color": "#000000",
   "background_color": "#fffff",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "name": "INCO",
-  "short_name": "INCO",
-  "description": "충남삼성고 정보통신 퀴즈",
+  "name": "조화작",
+  "short_name": "조화작",
+  "description": "충남삼성고 화법과 작문 퀴즈",
   "icons": [
     {
       "src": "/images/icons/icon-48x48.png",

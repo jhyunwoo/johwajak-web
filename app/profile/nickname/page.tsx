@@ -47,7 +47,14 @@ export default function Nickname() {
           nickname: nickname,
         },
       });
-      setIsAvailable(nickname);
+
+      if (request.data.available === false) {
+        alert("이미 등록된 닉네임입니다.");
+        setIsAvailable("_");
+      } else {
+        setIsAvailable(nickname);
+      }
+
       setIsLoading(false);
     } catch {
       alert("닉네임 중복 검사를 다시 해주세요.");
@@ -105,7 +112,7 @@ export default function Nickname() {
         </button>
         <button
           type="submit"
-          className="bg-sky-400 p-2 rounded-lg hover:bg-sky-500 transition duration-200 text-white font-semibold mt-2"
+          className="bg-lime-600 p-2 rounded-lg hover:bg-sky-500 transition duration-200 text-white font-semibold mt-2"
         >
           제출
         </button>
