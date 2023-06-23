@@ -42,6 +42,11 @@ export default function Nickname() {
     try {
       setIsLoading(true);
       const nickname = getValues("nickname");
+      if (nickname === "") {
+        alert("닉네임을 입력해주세요.");
+        setIsLoading(false);
+        return;
+      }
       const request = await axios.get("/api/user/nickname", {
         params: {
           nickname: nickname,
@@ -85,7 +90,7 @@ export default function Nickname() {
               message: "닉네임은 8글자 이하로 설정해주세요.",
             },
           })}
-          className="ring-2 ring-sky-500 p-2 rounded-lg outline-none bg-slate-50"
+          className="ring-2 ring-lime-500 p-2 rounded-lg outline-none bg-slate-50"
         />
         {errors.nickname && (
           <span className="text-red-500 mt-1">{errors.nickname.message}</span>
@@ -106,13 +111,13 @@ export default function Nickname() {
         <button
           onClick={checkNickname}
           type="button"
-          className="bg-blue-400 p-2 rounded-lg hover:bg-blue-500 transition duration-200 text-white font-semibold mt-2"
+          className="bg-lime-400 p-2 rounded-lg hover:bg-lime-500 transition duration-200 text-white font-semibold mt-2"
         >
           중복 검사
         </button>
         <button
           type="submit"
-          className="bg-lime-600 p-2 rounded-lg hover:bg-sky-500 transition duration-200 text-white font-semibold mt-2"
+          className="bg-lime-600 p-2 rounded-lg hover:bg-lime-500 transition duration-200 text-white font-semibold mt-2"
         >
           제출
         </button>
