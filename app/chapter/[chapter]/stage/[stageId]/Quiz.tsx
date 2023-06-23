@@ -227,7 +227,8 @@ export default function Quiz({ questions }: { questions: questions[] }) {
                     href={
                       "https://instagram.com/ill.poet__?igshid=NTc4MTIwNjQ2YQ=="
                     }
-                    passHref
+                    rel="noopener noreferrer"
+                    target="_blank"
                     className={"p-2 px-4 rounded-full bg-lime-500 text-white"}
                   >
                     이의 신청
