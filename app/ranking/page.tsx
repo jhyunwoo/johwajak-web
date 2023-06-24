@@ -46,7 +46,7 @@ export default async function Ranking() {
     } else if (score < 4500) {
       return "bg-gradient-to-r from-blue-600 via-purple-500 to-sky-600";
     } else {
-      return "bg-gradient-to-r from-red-400 via-yellow-400 to-blue-400";
+      return "bg-gradient-to-r from-red-400 via-yellow-400 to-blue-400 animate-pulse";
     }
   }
 
