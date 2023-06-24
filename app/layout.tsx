@@ -8,6 +8,7 @@ import Recoil from "@/components/Recoil";
 import CustomLoading from "@/components/CustomLoading";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import CookieBanner from "@/components/cookiebanner";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -258,6 +259,11 @@ export default async function RootLayout({
   return (
     <html lang="kr">
       <GoogleAnalytics GA_MEASUREMENT_ID="G-57WFY0DXKP" />
+      <Script
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token": "1976a30ebe1d497cbb50e6d5d48dbe62"}'
+      />
       <AuthProvider>
         <Recoil>
           <body className={(inter.className, "scrollbar-hide")}>
